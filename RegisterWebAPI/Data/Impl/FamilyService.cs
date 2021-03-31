@@ -12,13 +12,14 @@ namespace Familyregister.Data
     {
         private IFileContext fileContext;
         private IList<Family> families;
-        
+
         public FamilyService(IFileContext fileContext)
         {
             this.fileContext = fileContext;
             families = fileContext.GetFamilies();
         }
 
+// ----------
         public IList<Family> GetFamilies()
         {
             return fileContext.GetFamilies();
@@ -44,6 +45,7 @@ namespace Familyregister.Data
             {
                 throw new Exception("Adult not found");
             }
+
             return adultToEdit;
         }
 
@@ -51,7 +53,7 @@ namespace Familyregister.Data
         {
             Adult adultToRemove = GetAdult(id);
             IList<Family> families = fileContext.GetFamilies();
-            
+
             foreach (var family in families)
             {
                 foreach (var adult in family.Adults)
@@ -62,11 +64,13 @@ namespace Familyregister.Data
                         break;
                     }
                 }
+
                 // adultToEdit = family.Adults.Find(adult => adult.Id == id);
             }
+
             fileContext.SaveChanges();
         }
-        
+
         public void AddAdult(Adult adult, Family family)
         {
             Family familyToAddTo = fileContext.GetFamilies().First(familyTo => familyTo.Equals(family));
@@ -74,11 +78,12 @@ namespace Familyregister.Data
             fileContext.SaveChanges();
         }
 
-        
+
         // ---------------
-        public Task<IList<Family>> GetFamiliesAsync()
+        public async Task<IList<Family>> GetFamiliesAsync()
         {
-            throw new NotImplementedException();
+            IList<Family> familiesAsync = await fileContext.GetFamilies();
+            return familiesAsync;
         }
 
         public Task UpdateAsync(Adult adult, Family family)

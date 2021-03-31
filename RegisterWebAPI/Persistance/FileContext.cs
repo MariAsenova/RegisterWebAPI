@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
+using System.Threading.Tasks;
 using Models;
 
 namespace FileData
@@ -26,7 +27,7 @@ namespace FileData
             }
         }
 
-        public void SaveChanges()
+        public async Task SaveChanges()
         {
             // storing families
             string jsonFamilies = JsonSerializer.Serialize(Families, new JsonSerializerOptions
@@ -39,9 +40,10 @@ namespace FileData
             }
         }
 
-        public IList<Family> GetFamilies()
+        public async Task<IList<Family>> GetFamilies()
         {
-            return Families;
+            IList<Family> families = Families;
+            return families;
         }
     }
 }

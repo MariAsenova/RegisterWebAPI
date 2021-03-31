@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Models;
 
 namespace FileData
 {
     public interface IFileContext
     {
-        void SaveChanges();
-        IList<Family> GetFamilies();
+        Task SaveChanges();
+        Task<IList<Family>> GetFamilies();
     }
 }
