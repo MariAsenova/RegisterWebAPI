@@ -11,35 +11,32 @@ namespace Familyregister.Data
     public class FamilyService : IFamilyService
     {
         private IFileContext fileContext;
-        private IList<Family> families;
-
         public FamilyService(IFileContext fileContext)
         {
             this.fileContext = fileContext;
-            families = fileContext.GetFamilies();
+        }
+        
+        public async Task<IList<Family>> GetFamiliesAsync()
+        {
+            IList<Family> familiesAsync = await fileContext.GetFamiliesAsync();
+            return familiesAsync;
         }
 
-// ----------
-        public IList<Family> GetFamilies()
+        public async Task UpdateAsync(Adult adult, Family family)
         {
-            return fileContext.GetFamilies();
-        }
-
-        public void Update(Adult adult, Family family)
-        {
-            Family familyToUpdate = fileContext.GetFamilies().First(matchFamily =>
+            Family familyToUpdate = fileContext.GetFamiliesAsync().Result.First(matchFamily =>
                 matchFamily.HouseNumber == family.HouseNumber && matchFamily.StreetName.Equals(family.StreetName));
             familyToUpdate.Adults.Remove(adult);
             familyToUpdate.Adults.Add(adult);
 
-            fileContext.SaveChanges();
+            await fileContext.SaveChangesAsync();
         }
 
-        public Adult GetAdult(int id)
+        public async Task<Adult> GetAdultAsync(int id)
         {
-            IList<Family> families = fileContext.GetFamilies();
-
-            Adult adultToEdit = fileContext.GetFamilies().SelectMany(family => family.Adults)
+            IList<Family> familiesAsync = await fileContext.GetFamiliesAsync();
+            
+            Adult adultToEdit = familiesAsync.SelectMany(family => family.Adults)
                 .FirstOrDefault(adult => adult.Id == id);
             if (adultToEdit == null)
             {
@@ -49,10 +46,9 @@ namespace Familyregister.Data
             return adultToEdit;
         }
 
-        public void RemoveAdult(int id)
+        public async Task RemoveAdultAsync(int id)
         {
-            Adult adultToRemove = GetAdult(id);
-            IList<Family> families = fileContext.GetFamilies();
+            IList<Family> families= await fileContext.GetFamiliesAsync();
 
             foreach (var family in families)
             {
@@ -64,46 +60,16 @@ namespace Familyregister.Data
                         break;
                     }
                 }
-
-                // adultToEdit = family.Adults.Find(adult => adult.Id == id);
             }
-
-            fileContext.SaveChanges();
+            await fileContext.SaveChangesAsync();
         }
 
-        public void AddAdult(Adult adult, Family family)
+        public async Task AddAdultAsync(Adult adult, Family family)
         {
-            Family familyToAddTo = fileContext.GetFamilies().First(familyTo => familyTo.Equals(family));
+            IList<Family> familiesAsync = await fileContext.GetFamiliesAsync();
+            Family familyToAddTo = familiesAsync.First(familyTo => familyTo.Equals(family));
             familyToAddTo.Adults.Add(adult);
-            fileContext.SaveChanges();
-        }
-
-
-        // ---------------
-        public async Task<IList<Family>> GetFamiliesAsync()
-        {
-            IList<Family> familiesAsync = await fileContext.GetFamilies();
-            return familiesAsync;
-        }
-
-        public Task UpdateAsync(Adult adult, Family family)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Adult> GetAdultAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task RemoveAdultAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task AddAdultAsync(Adult adult, Family family)
-        {
-            throw new NotImplementedException();
+            await fileContext.SaveChangesAsync();
         }
     }
 }

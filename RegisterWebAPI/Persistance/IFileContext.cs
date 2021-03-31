@@ -6,7 +6,7 @@ namespace FileData
 {
     public interface IFileContext
     {
-        Task SaveChanges();
-        Task<IList<Family>> GetFamilies();
+        Task SaveChangesAsync();
+        Task<IList<Family>> GetFamiliesAsync();
     }
 }

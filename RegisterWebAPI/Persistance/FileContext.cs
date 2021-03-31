@@ -27,7 +27,7 @@ namespace FileData
             }
         }
 
-        public async Task SaveChanges()
+        public async Task SaveChangesAsync()
         {
             // storing families
             string jsonFamilies = JsonSerializer.Serialize(Families, new JsonSerializerOptions
@@ -40,7 +40,7 @@ namespace FileData
             }
         }
 
-        public async Task<IList<Family>> GetFamilies()
+        public async Task<IList<Family>> GetFamiliesAsync()
         {
             IList<Family> families = Families;
             return families;
