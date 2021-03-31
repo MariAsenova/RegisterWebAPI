@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Familyregister.Data;
+using Familyregister.Data.Impl;
+using FileData;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,6 +34,9 @@ namespace RegisterWebAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "RegisterWebAPI", Version = "v1"});
             });
+            services.AddScoped<IFamilyService, FamilyService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IFileContext, FileContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

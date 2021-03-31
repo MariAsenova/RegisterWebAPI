@@ -2,16 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.VisualBasic;
 using Models;
 
 namespace Familyregister.Data.Impl
 {
-    public class InMemoryUserService : IUserService
+    public class UserService : IUserService
     {
         private List<User> users;
 
-        public InMemoryUserService()
+        public UserService()
         {
             users = new[]
             {
@@ -30,7 +31,7 @@ namespace Familyregister.Data.Impl
             }.ToList();
         }
         
-        public User ValidateUser(string username, string password)
+        public async Task<User> ValidateUserAsync(string username, string password)
         {
             User userGiven = users.FirstOrDefault(user => user.UserName.Equals(username));
 
