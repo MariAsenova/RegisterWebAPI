@@ -9,7 +9,10 @@ namespace Familyregister.Data
 {
     public class FamilyService : IFamilyService
     {
+        private string familiesFile = "families.json";
         private IFileContext fileContext;
+        
+        
         public FamilyService(IFileContext fileContext)
         {
             this.fileContext = fileContext;
