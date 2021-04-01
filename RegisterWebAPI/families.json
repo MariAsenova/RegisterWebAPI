@@ -5,36 +5,6 @@
     "Adults": [
       {
         "JobTitle": {
-          "JobTitle": "Mascot",
-          "Salary": 99821
-        },
-        "Id": 0,
-        "FirstName": "Yasmine",
-        "LastName": "Baxter",
-        "HairColor": "Black",
-        "EyeColor": "Brown",
-        "Age": 58,
-        "Weight": 39.8,
-        "Height": 174,
-        "Sex": "F"
-      },
-      {
-        "JobTitle": {
-          "JobTitle": "Doctor",
-          "Salary": 69000
-        },
-        "Id": 3768,
-        "FirstName": "Kasper",
-        "LastName": "Pedersen",
-        "HairColor": "Black",
-        "EyeColor": "Blue",
-        "Age": 34,
-        "Weight": 67,
-        "Height": 178,
-        "Sex": "M"
-      },
-      {
-        "JobTitle": {
           "JobTitle": "Doctor",
           "Salary": 69000
         },
@@ -47,36 +17,6 @@
         "Weight": 67,
         "Height": 178,
         "Sex": "M"
-      },
-      {
-        "JobTitle": {
-          "JobTitle": "Mascot",
-          "Salary": 99821
-        },
-        "Id": 0,
-        "FirstName": "Yasmine",
-        "LastName": "Baxter",
-        "HairColor": "Blackkkk",
-        "EyeColor": "Brown",
-        "Age": 58,
-        "Weight": 39.8,
-        "Height": 174,
-        "Sex": "F"
-      },
-      {
-        "JobTitle": {
-          "JobTitle": "Mascot",
-          "Salary": 99821
-        },
-        "Id": 0,
-        "FirstName": "Yasmineeee",
-        "LastName": "Baxter",
-        "HairColor": "Blackkkk",
-        "EyeColor": "Brown",
-        "Age": 58,
-        "Weight": 39.8,
-        "Height": 174,
-        "Sex": "F"
       }
     ],
     "Children": [],
@@ -99,21 +39,6 @@
         "Age": 36,
         "Weight": 64.8,
         "Height": 147,
-        "Sex": "F"
-      },
-      {
-        "JobTitle": {
-          "JobTitle": "Business Development Manager",
-          "Salary": 71456
-        },
-        "Id": 2,
-        "FirstName": "Samara",
-        "LastName": "Humphrey",
-        "HairColor": "Black",
-        "EyeColor": "Brown",
-        "Age": 34,
-        "Weight": 37,
-        "Height": 145,
         "Sex": "F"
       },
       {
@@ -488,21 +413,6 @@
         "Age": 52,
         "Weight": 56.8,
         "Height": 172,
-        "Sex": "F"
-      },
-      {
-        "JobTitle": {
-          "JobTitle": "Office Clerk",
-          "Salary": 41332
-        },
-        "Id": 8,
-        "FirstName": "Andi",
-        "LastName": "Wells",
-        "HairColor": "Brown",
-        "EyeColor": "Ottosen",
-        "Age": 44,
-        "Weight": 27.6,
-        "Height": 148,
         "Sex": "F"
       },
       {

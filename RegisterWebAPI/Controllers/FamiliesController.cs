@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Threading.Tasks;
 using Familyregister.Data;
 using Microsoft.AspNetCore.Mvc;
@@ -57,6 +58,21 @@ namespace RegisterWebAPI.Controllers
             {
                 await familyService.UpdateAsync(adult);
                 return Ok();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        [HttpDelete]
+        [Route("{id:int}")]
+        public async Task DeleteAdult([FromRoute] int id)
+        {
+            try
+            {
+                await familyService.RemoveAdultAsync(id);
             }
             catch (Exception e)
             {

@@ -71,21 +71,18 @@ namespace Familyregister.Data
 
         public async Task RemoveAdultAsync(int id)
         {
-            IList<Family> families = await fileContext.GetFamiliesAsync();
-
-            foreach (var family in families)
-            {
+            //IList<Family> families = await fileContext.GetFamiliesAsync();
+            
+            Family family = fileContext.GetFamiliesAsync().Result.First(f => f.Adults.Exists(adultTo => adultTo.Id == id));
+            
                 foreach (var adult in family.Adults)
                 {
                     if (adult.Id == id)
                     {
                         family.Adults.Remove(adult);
-                        break;
+                        await fileContext.SaveChangesAsync();
                     }
                 }
-            }
-
-            await fileContext.SaveChangesAsync();
         }
 
         public async Task AddAdultAsync(Adult adult, Family family)
