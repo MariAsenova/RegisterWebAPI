@@ -2,61 +2,14 @@
   {
     "StreetName": "Bay Avenue",
     "HouseNumber": 1,
-    "Adults": [
-      {
-        "JobTitle": {
-          "JobTitle": "Doctor",
-          "Salary": 69000
-        },
-        "Id": 3768,
-        "FirstName": "Kasper",
-        "LastName": "Pedersenn",
-        "HairColor": "Black",
-        "EyeColor": "Blue",
-        "Age": 34,
-        "Weight": 67,
-        "Height": 178,
-        "Sex": "M"
-      }
-    ],
+    "Adults": [],
     "Children": [],
     "Pets": []
   },
   {
     "StreetName": "Innovation Avenue",
     "HouseNumber": 1,
-    "Adults": [
-      {
-        "JobTitle": {
-          "JobTitle": "Front End Web Developer",
-          "Salary": 66408
-        },
-        "Id": 1,
-        "FirstName": "Lyla",
-        "LastName": "Humphrey",
-        "HairColor": "Black",
-        "EyeColor": "Brown",
-        "Age": 36,
-        "Weight": 64.8,
-        "Height": 147,
-        "Sex": "F"
-      },
-      {
-        "JobTitle": {
-          "JobTitle": "Business Development Manager",
-          "Salary": 71456
-        },
-        "Id": 2,
-        "FirstName": "Samara",
-        "LastName": "Humphrey",
-        "HairColor": "Black",
-        "EyeColor": "Brownnnnnn",
-        "Age": 34,
-        "Weight": 37,
-        "Height": 145,
-        "Sex": "F"
-      }
-    ],
+    "Adults": [],
     "Children": [
       {
         "Interests": [
@@ -414,21 +367,6 @@
         "Weight": 56.8,
         "Height": 172,
         "Sex": "F"
-      },
-      {
-        "JobTitle": {
-          "JobTitle": "Office Clerk",
-          "Salary": 41332
-        },
-        "Id": 8,
-        "FirstName": "Andiiiiii",
-        "LastName": "Wells",
-        "HairColor": "Brown",
-        "EyeColor": "Ottosen",
-        "Age": 44,
-        "Weight": 27.6,
-        "Height": 148,
-        "Sex": "F"
       }
     ],
     "Children": [
@@ -754,23 +692,7 @@
   {
     "StreetName": "Airport Avenue",
     "HouseNumber": 1,
-    "Adults": [
-      {
-        "JobTitle": {
-          "JobTitle": "Nurse",
-          "Salary": 36813
-        },
-        "Id": 11,
-        "FirstName": "Zahra",
-        "LastName": "Salt",
-        "HairColor": "Brown",
-        "EyeColor": "Grey",
-        "Age": 32,
-        "Weight": 124.2,
-        "Height": 174,
-        "Sex": "F"
-      }
-    ],
+    "Adults": [],
     "Children": [
       {
         "Interests": [
@@ -866,23 +788,7 @@
   {
     "StreetName": "Sycamore Drive",
     "HouseNumber": 1,
-    "Adults": [
-      {
-        "JobTitle": {
-          "JobTitle": "Web Administrator",
-          "Salary": 44759
-        },
-        "Id": 12,
-        "FirstName": "Zavier",
-        "LastName": "Huffman",
-        "HairColor": "Black",
-        "EyeColor": "Brown",
-        "Age": 59,
-        "Weight": 54.4,
-        "Height": 166,
-        "Sex": "M"
-      }
-    ],
+    "Adults": [],
     "Children": [
       {
         "Interests": [
@@ -946,23 +852,7 @@
   {
     "StreetName": "Hazlett Avenue",
     "HouseNumber": 1,
-    "Adults": [
-      {
-        "JobTitle": {
-          "JobTitle": "Science Teacher",
-          "Salary": 55346
-        },
-        "Id": 13,
-        "FirstName": "Arley",
-        "LastName": "Vaughn",
-        "HairColor": "Black",
-        "EyeColor": "Brown",
-        "Age": 33,
-        "Weight": 55.4,
-        "Height": 171,
-        "Sex": "M"
-      }
-    ],
+    "Adults": [],
     "Children": [
       {
         "Interests": [

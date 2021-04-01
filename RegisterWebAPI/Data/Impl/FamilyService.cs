@@ -26,7 +26,8 @@ namespace Familyregister.Data
 
         public async Task UpdateAsync(Adult adult)
         {
-            Family family = fileContext.GetFamiliesAsync().Result.First(f => f.Adults.Exists(adultTo => adultTo.Id == adult.Id));
+            Family family = fileContext.GetFamiliesAsync().Result
+                .First(f => f.Adults.Exists(adultTo => adultTo.Id == adult.Id));
 
             if (family != null)
             {
@@ -34,7 +35,7 @@ namespace Familyregister.Data
                     .Adults.Remove(adult);
                 fileContext.GetFamiliesAsync().Result.First(f => f.Adults.Exists(adultTo => adultTo.Id == adult.Id))
                     .Adults.Add(adult);
-                
+
                 await fileContext.SaveChangesAsync();
             }
             else
@@ -46,10 +47,10 @@ namespace Familyregister.Data
         public async Task<Adult> GetAdultAsync(int id)
         {
             IList<Family> familiesAsync = await fileContext.GetFamiliesAsync();
-            
+
             // TODO refactor
             Adult adultToEdit = null;
-            
+
             foreach (var family in familiesAsync)
             {
                 foreach (var adult in family.Adults)
@@ -60,7 +61,7 @@ namespace Familyregister.Data
                     }
                 }
             }
-            
+
             if (adultToEdit == null)
             {
                 throw new Exception("Adult not found");
@@ -71,24 +72,26 @@ namespace Familyregister.Data
 
         public async Task RemoveAdultAsync(int id)
         {
-            //IList<Family> families = await fileContext.GetFamiliesAsync();
-            
-            Family family = fileContext.GetFamiliesAsync().Result.First(f => f.Adults.Exists(adultTo => adultTo.Id == id));
-            
-                foreach (var adult in family.Adults)
-                {
-                    if (adult.Id == id)
-                    {
-                        family.Adults.Remove(adult);
-                        await fileContext.SaveChangesAsync();
-                    }
-                }
+            Adult adult = fileContext.GetFamiliesAsync().Result
+                .First(f => f.Adults.Exists(adultTo => adultTo.Id == id)).Adults.First(adultTo => adultTo.Id == id);
+            var removedAdult = fileContext.GetFamiliesAsync().Result.First(family => family.Adults.Exists(adultTo => adultTo.Id == id))
+                .Adults.Remove(adult);
+
+            if (removedAdult)
+            {
+                await fileContext.SaveChangesAsync();
+            }
+            else
+            {
+                Console.WriteLine("adult to remove not found");
+            }
         }
 
         public async Task AddAdultAsync(Adult adult, Family family)
         {
             IList<Family> familiesAsync = await fileContext.GetFamiliesAsync();
             Family familyToAddTo = familiesAsync.First(familyTo => familyTo.Equals(family));
+
             familyToAddTo.Adults.Add(adult);
             await fileContext.SaveChangesAsync();
         }
