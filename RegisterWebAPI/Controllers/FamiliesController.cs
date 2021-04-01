@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Familyregister.Data;
@@ -18,8 +19,7 @@ namespace RegisterWebAPI.Controllers
         {
             this.familyService = familyService;
         }
-
-        // endpoint method get
+        
         [HttpGet]
         public async Task<ActionResult<IList<Family>>> GetFamiliesAsync()
         {
@@ -52,12 +52,15 @@ namespace RegisterWebAPI.Controllers
         }
 
         [HttpPatch]
-        public async Task<ActionResult<Adult>> UpdateAdultAsync([FromBody] Adult adult)
+        public async Task UpdateAdultAsync([FromBody] Adult adult, [FromQuery] string streetName,
+            [FromQuery] int? houseNumber)
         {
+            Console.WriteLine(adult.FirstName + " " + streetName + " " + houseNumber);
             try
             {
-                await familyService.UpdateAsync(adult);
-                return Ok();
+                Family familyToAdd = familyService.GetFamiliesAsync().Result.First(familyTo =>
+                    familyTo.StreetName.Equals(streetName) && familyTo.HouseNumber == houseNumber);
+                await familyService.UpdateAsync(adult, familyToAdd);
             }
             catch (Exception e)
             {
@@ -73,6 +76,25 @@ namespace RegisterWebAPI.Controllers
             try
             {
                 await familyService.RemoveAdultAsync(id);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        [HttpPost]
+        public async Task AddAdultAsync([FromBody] Adult adult, [FromQuery] string streetName,
+            [FromQuery] int? houseNumber)
+        {
+            try
+            {
+                Console.WriteLine(adult.FirstName + " " + streetName + " " + houseNumber);
+
+                Family familyToAdd = familyService.GetFamiliesAsync().Result.First(familyTo =>
+                    familyTo.StreetName.Equals(streetName) && familyTo.HouseNumber == houseNumber);
+                await familyService.AddAdultAsync(adult, familyToAdd);
             }
             catch (Exception e)
             {

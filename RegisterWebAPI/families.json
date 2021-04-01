@@ -2,7 +2,23 @@
   {
     "StreetName": "Bay Avenue",
     "HouseNumber": 1,
-    "Adults": [],
+    "Adults": [
+      {
+        "JobTitle": {
+          "JobTitle": "Project Manager",
+          "Salary": 45000
+        },
+        "Id": 43,
+        "FirstName": "Maria",
+        "LastName": "Asenova",
+        "HairColor": "Brown",
+        "EyeColor": "Blue",
+        "Age": 24,
+        "Weight": 56,
+        "Height": 167,
+        "Sex": "F"
+      }
+    ],
     "Children": [],
     "Pets": []
   },
@@ -548,6 +564,21 @@
         "Id": 10,
         "FirstName": "Lester",
         "LastName": "Cruz",
+        "HairColor": "White",
+        "EyeColor": "Amber",
+        "Age": 39,
+        "Weight": 126.2,
+        "Height": 179,
+        "Sex": "M"
+      },
+      {
+        "JobTitle": {
+          "JobTitle": "Casino Host",
+          "Salary": 35445
+        },
+        "Id": 10,
+        "FirstName": "Lester",
+        "LastName": "Cruzich",
         "HairColor": "White",
         "EyeColor": "Amber",
         "Age": 39,
