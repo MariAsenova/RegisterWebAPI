@@ -42,8 +42,7 @@ namespace FileData
 
         public async Task<IList<Family>> GetFamiliesAsync()
         {
-            IList<Family> families = Families;
-            return families;
+            return Families;
         }
     }
 }

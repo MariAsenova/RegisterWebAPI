@@ -11,35 +11,56 @@ namespace Familyregister.Data
     {
         private string familiesFile = "families.json";
         private IFileContext fileContext;
-        
-        
+
+
         public FamilyService(IFileContext fileContext)
         {
             this.fileContext = fileContext;
         }
-        
+
         public async Task<IList<Family>> GetFamiliesAsync()
         {
             IList<Family> familiesAsync = await fileContext.GetFamiliesAsync();
             return familiesAsync;
         }
 
-        public async Task UpdateAsync(Adult adult, Family family)
+        public async Task UpdateAsync(Adult adult)
         {
-            Family familyToUpdate = fileContext.GetFamiliesAsync().Result.First(matchFamily =>
-                matchFamily.HouseNumber == family.HouseNumber && matchFamily.StreetName.Equals(family.StreetName));
-            familyToUpdate.Adults.Remove(adult);
-            familyToUpdate.Adults.Add(adult);
+            Family family = fileContext.GetFamiliesAsync().Result.First(f => f.Adults.Exists(adultTo => adultTo.Id == adult.Id));
 
-            await fileContext.SaveChangesAsync();
+            if (family != null)
+            {
+                fileContext.GetFamiliesAsync().Result.First(f => f.Adults.Exists(adultTo => adultTo.Id == adult.Id))
+                    .Adults.Remove(adult);
+                fileContext.GetFamiliesAsync().Result.First(f => f.Adults.Exists(adultTo => adultTo.Id == adult.Id))
+                    .Adults.Add(adult);
+                
+                await fileContext.SaveChangesAsync();
+            }
+            else
+            {
+                Console.WriteLine("Family for updating adult not found");
+            }
         }
 
         public async Task<Adult> GetAdultAsync(int id)
         {
             IList<Family> familiesAsync = await fileContext.GetFamiliesAsync();
             
-            Adult adultToEdit = familiesAsync.SelectMany(family => family.Adults)
-                .FirstOrDefault(adult => adult.Id == id);
+            // TODO refactor
+            Adult adultToEdit = null;
+            
+            foreach (var family in familiesAsync)
+            {
+                foreach (var adult in family.Adults)
+                {
+                    if (adult.Id == id)
+                    {
+                        adultToEdit = adult;
+                    }
+                }
+            }
+            
             if (adultToEdit == null)
             {
                 throw new Exception("Adult not found");
@@ -50,7 +71,7 @@ namespace Familyregister.Data
 
         public async Task RemoveAdultAsync(int id)
         {
-            IList<Family> families= await fileContext.GetFamiliesAsync();
+            IList<Family> families = await fileContext.GetFamiliesAsync();
 
             foreach (var family in families)
             {
@@ -63,6 +84,7 @@ namespace Familyregister.Data
                     }
                 }
             }
+
             await fileContext.SaveChangesAsync();
         }
 

@@ -17,7 +17,7 @@ namespace RegisterWebAPI.Controllers
         {
             this.familyService = familyService;
         }
-        
+
         // endpoint method get
         [HttpGet]
         public async Task<ActionResult<IList<Family>>> GetFamiliesAsync()
@@ -33,6 +33,36 @@ namespace RegisterWebAPI.Controllers
                 throw;
             }
         }
-        
+
+        [HttpGet]
+        [Route("{id:int}")]
+        public async Task<ActionResult<Adult>> GetAdultAsync([FromRoute] int id)
+        {
+            try
+            {
+                Adult adultAsync = await familyService.GetAdultAsync(id);
+                return Ok(adultAsync);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        [HttpPatch]
+        public async Task<ActionResult<Adult>> UpdateAdultAsync([FromBody] Adult adult)
+        {
+            try
+            {
+                await familyService.UpdateAsync(adult);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
     }
 }
