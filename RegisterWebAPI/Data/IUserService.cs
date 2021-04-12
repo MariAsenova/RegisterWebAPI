@@ -5,6 +5,6 @@ namespace Familyregister.Data
 {
     public interface IUserService
     {
-        Task<User> ValidateUserAsync(string userName, string password);
+        Task<User> GetUserWithPassword(string userName);
     }
 }

@@ -16,8 +16,7 @@ namespace FileData
         {
             Families = File.Exists(familiesFile) ? ReadData<Family>(familiesFile) : new List<Family>();
         }
-        
-        
+
 
         private IList<T> ReadData<T>(string s)
         {

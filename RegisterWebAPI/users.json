@@ -1,0 +1,27 @@
+[
+  {
+    "username": "LeanneGraham",
+    "role": "manager",
+    "password":  "1234"
+    },
+  {
+    "username": "ErvinHowell",
+    "role": "manager",
+    "password": "1234"
+  },
+  {
+    "username": "ClementineBauch",
+    "role": "analyst",
+    "password": "1234"
+  },
+  {
+    "username": "PatriciaBebsack",
+    "role": "developer",
+    "password": "1234"
+  },
+  {
+    "username": "ChelseyDietrich",
+    "role": "sales",
+    "password": "1234"
+  }
+]

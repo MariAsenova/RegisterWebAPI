@@ -1,53 +1,39 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.VisualBasic;
+using FileData;
 using Models;
 
 namespace Familyregister.Data.Impl
 {
     public class UserService : IUserService
     {
-        private List<User> users;
+        private IUserContext userContext;
 
-        public UserService()
+        public UserService(IUserContext userContext)
         {
-            users = new[]
-            {
-                new User()
-                {
-                    Password = "1234",
-                    Role = "Manager",
-                    UserName = "mariaasenova"
-                },
-                new User()
-                {
-                    Password = "1234",
-                    Role = "Analyst",
-                    UserName = "rasmus"
-                }
-            }.ToList();
+            this.userContext = userContext;
         }
-        
-        public async Task<User> ValidateUserAsync(string username, string password)
+
+        public async Task<User> GetUserWithPassword(string username)
         {
-            User userGiven = users.FirstOrDefault(user => user.UserName.Equals(username));
-
-            if (username == null)
+            try
             {
-                throw new Exception("User not found");
+                // TODO 
+                Task<IList<User>> usersAsync = userContext.GetUsersAsync();
+                // getting result out
+                IList<User> list = usersAsync.GetAwaiter().GetResult();
+                
+                User first = list.First(userTo => userTo.UserName.Equals(username));
+                
+                return first;
             }
-
-            if (!userGiven.Password.Equals(password))
+            catch (Exception e)
             {
-                throw new Exception("Incorrect password");
+                Console.WriteLine(e);
+                throw;
             }
-
-            return userGiven;
         }
     }
-    
-
 }

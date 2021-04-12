@@ -25,7 +25,23 @@
   {
     "StreetName": "Innovation Avenue",
     "HouseNumber": 1,
-    "Adults": [],
+    "Adults": [
+      {
+        "JobTitle": {
+          "JobTitle": "Head of Marketing",
+          "Salary": 36000
+        },
+        "Id": 88,
+        "FirstName": "Kasper",
+        "LastName": "Andersen",
+        "HairColor": "Black",
+        "EyeColor": "Green",
+        "Age": 30,
+        "Weight": 72,
+        "Height": 168,
+        "Sex": "M"
+      }
+    ],
     "Children": [
       {
         "Interests": [
@@ -242,6 +258,21 @@
         "Id": 6,
         "FirstName": "Anastasia",
         "LastName": "Fitzgerald",
+        "HairColor": "Black",
+        "EyeColor": "Brown",
+        "Age": 44,
+        "Weight": 99.8,
+        "Height": 147,
+        "Sex": "F"
+      },
+      {
+        "JobTitle": {
+          "JobTitle": "Service Advisor",
+          "Salary": 72532
+        },
+        "Id": 6,
+        "FirstName": "Anastasia",
+        "LastName": "Fitgerald",
         "HairColor": "Black",
         "EyeColor": "Brown",
         "Age": 44,
