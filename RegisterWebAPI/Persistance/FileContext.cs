@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Models;
@@ -42,6 +43,13 @@ namespace FileData
         public async Task<IList<Family>> GetFamiliesAsync()
         {
             return Families;
+        }
+
+        public async Task RemoveAdultAsync(Adult adult)
+        {
+            Families.First(familyTo => familyTo.Adults.Exists(adultTo => adultTo.Id == adult.Id))
+                .Adults.Remove(adult);
+            await SaveChangesAsync();
         }
     }
 }

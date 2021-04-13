@@ -46,9 +46,8 @@ namespace Familyregister.Data
 
         public async Task UpdateAsync(Adult adult, Family family)
         {
-            fileContext.GetFamiliesAsync().Result.First(f => f.Equals(family)).Adults.Remove(adult);
-            fileContext.GetFamiliesAsync().Result.First(f => f.Equals(family)).Adults.Add(adult);
-            await fileContext.SaveChangesAsync();
+            await RemoveAdultAsync(adult.Id);
+            await AddAdultAsync(adult, family);
         }
 
         public async Task<Adult> GetAdultAsync(int id)
@@ -79,11 +78,12 @@ namespace Familyregister.Data
 
         public async Task RemoveAdultAsync(int id)
         {
-
             Adult adult = fileContext.GetFamiliesAsync().Result
                 .First(f => f.Adults.Exists(adultTo => adultTo.Id == id)).Adults.First(adultTo => adultTo.Id == id);
-            var removedAdult = fileContext.GetFamiliesAsync().Result.First(family => family.Adults.Exists(adultTo => adultTo.Id == id))
+            var removedAdult = fileContext.GetFamiliesAsync().Result
+                .First(family => family.Adults.Exists(adultTo => adultTo.Id == id))
                 .Adults.Remove(adult);
+            Console.WriteLine(removedAdult);
 
             if (removedAdult)
             {

@@ -574,48 +574,18 @@
     "Adults": [
       {
         "JobTitle": {
-          "JobTitle": "Writer",
-          "Salary": 63392
+          "JobTitle": "Doctor",
+          "Salary": 67000
         },
-        "Id": 9,
-        "FirstName": "Genevieve",
-        "LastName": "Cruz",
-        "HairColor": "Leverpostej",
-        "EyeColor": "Brown",
-        "Age": 46,
-        "Weight": 102.5,
-        "Height": 164,
+        "Id": 566,
+        "FirstName": "Merry",
+        "LastName": "Partozz",
+        "HairColor": "Brown",
+        "EyeColor": "Green",
+        "Age": 45,
+        "Weight": 67,
+        "Height": 178,
         "Sex": "F"
-      },
-      {
-        "JobTitle": {
-          "JobTitle": "Casino Host",
-          "Salary": 35445
-        },
-        "Id": 10,
-        "FirstName": "Lester",
-        "LastName": "Cruz",
-        "HairColor": "White",
-        "EyeColor": "Amber",
-        "Age": 39,
-        "Weight": 126.2,
-        "Height": 179,
-        "Sex": "M"
-      },
-      {
-        "JobTitle": {
-          "JobTitle": "Casino Host",
-          "Salary": 35445
-        },
-        "Id": 10,
-        "FirstName": "Lester",
-        "LastName": "Cruzich",
-        "HairColor": "White",
-        "EyeColor": "Amber",
-        "Age": 39,
-        "Weight": 126.2,
-        "Height": 179,
-        "Sex": "M"
       }
     ],
     "Children": [

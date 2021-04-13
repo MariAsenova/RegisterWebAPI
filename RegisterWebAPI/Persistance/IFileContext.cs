@@ -8,5 +8,6 @@ namespace FileData
     {
         Task SaveChangesAsync();
         Task<IList<Family>> GetFamiliesAsync();
+        Task RemoveAdultAsync(Adult adult);
     }
 }

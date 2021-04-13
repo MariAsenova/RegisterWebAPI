@@ -58,7 +58,8 @@ namespace RegisterWebAPI.Controllers
             Console.WriteLine(adult.FirstName + " " + streetName + " " + houseNumber);
             try
             {
-                Family familyToAdd = familyService.GetFamiliesAsync().Result.First(familyTo =>
+                IList<Family> list = familyService.GetFamiliesAsync().GetAwaiter().GetResult();
+                Family familyToAdd = list.First(familyTo =>
                     familyTo.StreetName.Equals(streetName) && familyTo.HouseNumber == houseNumber);
                 await familyService.UpdateAsync(adult, familyToAdd);
             }
