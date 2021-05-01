@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\maria\\RiderProjects\\RegisterWebAPI\\RegisterWebAPI\\RegisterWebAPI.csproj": {}
+    "C:\\Users\\maria\\RiderProjects\\ResgisterWebAPI\\RegisterWebAPI\\RegisterWebAPI\\RegisterWebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\maria\\RiderProjects\\RegisterWebAPI\\RegisterWebAPI\\RegisterWebAPI.csproj": {
+    "C:\\Users\\maria\\RiderProjects\\ResgisterWebAPI\\RegisterWebAPI\\RegisterWebAPI\\RegisterWebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\maria\\RiderProjects\\RegisterWebAPI\\RegisterWebAPI\\RegisterWebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\maria\\RiderProjects\\ResgisterWebAPI\\RegisterWebAPI\\RegisterWebAPI\\RegisterWebAPI.csproj",
         "projectName": "RegisterWebAPI",
-        "projectPath": "C:\\Users\\maria\\RiderProjects\\RegisterWebAPI\\RegisterWebAPI\\RegisterWebAPI.csproj",
+        "projectPath": "C:\\Users\\maria\\RiderProjects\\ResgisterWebAPI\\RegisterWebAPI\\RegisterWebAPI\\RegisterWebAPI.csproj",
         "packagesPath": "C:\\Users\\maria\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\maria\\RiderProjects\\RegisterWebAPI\\RegisterWebAPI\\obj\\",
+        "outputPath": "C:\\Users\\maria\\RiderProjects\\ResgisterWebAPI\\RegisterWebAPI\\RegisterWebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\maria\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,20 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.5, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[5.0.5, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
