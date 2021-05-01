@@ -571,7 +571,23 @@
   {
     "StreetName": "Railway Street",
     "HouseNumber": 1,
-    "Adults": [],
+    "Adults": [
+      {
+        "JobTitle": {
+          "JobTitle": "Doctor",
+          "Salary": 67000
+        },
+        "Id": 566,
+        "FirstName": "Merry",
+        "LastName": "Partozz",
+        "HairColor": "Brown",
+        "EyeColor": "Green",
+        "Age": 45,
+        "Weight": 67,
+        "Height": 178,
+        "Sex": "F"
+      }
+    ],
     "Children": [
       {
         "Interests": [
