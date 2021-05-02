@@ -165,12 +165,20 @@ namespace RegisterWebAPI.Migrations
             migrationBuilder.InsertData(
                 table: "Adults",
                 columns: new[] { "Id", "Age", "EyeColor", "FamilyIdFamily", "FirstName", "HairColor", "Height", "IdJob", "LastName", "Sex", "Weight" },
-                values: new object[] { 7, 24, "blue", null, "Maria", "Brown", 167, 1, "Asenova", "F", 56f });
+                values: new object[,]
+                {
+                    { 1, 24, "blue", null, "Maria", "Brown", 167, 1, "Asenova", "F", 56f },
+                    { 2, 30, "Green", null, "Kasper", "Black", 168, 2, "Andersen", "F", 72f }
+                });
 
             migrationBuilder.InsertData(
                 table: "Jobs",
                 columns: new[] { "IdJob", "IdAdult", "JobTitle", "Salary" },
-                values: new object[] { 1, 7, "Project Manager", 45000 });
+                values: new object[,]
+                {
+                    { 1, 1, "Project Manager", 45000 },
+                    { 2, 2, "Head of Marketing", 36000 }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Adults_FamilyIdFamily",

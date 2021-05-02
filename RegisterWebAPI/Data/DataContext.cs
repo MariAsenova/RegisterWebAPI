@@ -23,11 +23,11 @@ namespace Familyregister.Data
                 entity.HasOne(a => a.JobTitle).WithOne(j => j.Adult)
                     .HasForeignKey<Adult>(a => a.IdJob);
             });
-            
+
             modelBuilder.Entity<Adult>().HasData(
                 new Adult
                 {
-                    Id = 7,
+                    Id = 1,
                     FirstName = "Maria",
                     LastName = "Asenova",
                     HairColor = "Brown",
@@ -37,6 +37,19 @@ namespace Familyregister.Data
                     Height = 167,
                     Sex = "F",
                     IdJob = 1
+                },
+                new Adult
+                {
+                    Id = 2,
+                    FirstName = "Kasper",
+                    LastName = "Andersen",
+                    HairColor = "Black",
+                    EyeColor = "Green",
+                    Age = 30,
+                    Weight = 72,
+                    Height = 168,
+                    Sex = "F",
+                    IdJob = 2
                 });
 
             modelBuilder.Entity<Job>(entity =>
@@ -51,10 +64,16 @@ namespace Familyregister.Data
                     IdJob = 1,
                     JobTitle = "Project Manager",
                     Salary = 45000,
-                    IdAdult = 7
+                    IdAdult = 1
+                },
+                new Job
+                {
+                    IdJob = 2,
+                    JobTitle = "Head of Marketing",
+                    Salary = 36000,
+                    IdAdult = 2
                 }
             );
-
         }
     }
 }

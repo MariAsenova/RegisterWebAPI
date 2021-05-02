@@ -65,7 +65,7 @@ namespace RegisterWebAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 7,
+                            Id = 1,
                             Age = 24,
                             EyeColor = "blue",
                             FirstName = "Maria",
@@ -75,6 +75,19 @@ namespace RegisterWebAPI.Migrations
                             LastName = "Asenova",
                             Sex = "F",
                             Weight = 56f
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Age = 30,
+                            EyeColor = "Green",
+                            FirstName = "Kasper",
+                            HairColor = "Black",
+                            Height = 168,
+                            IdJob = 2,
+                            LastName = "Andersen",
+                            Sex = "F",
+                            Weight = 72f
                         });
                 });
 
@@ -187,9 +200,16 @@ namespace RegisterWebAPI.Migrations
                         new
                         {
                             IdJob = 1,
-                            IdAdult = 7,
+                            IdAdult = 1,
                             JobTitle = "Project Manager",
                             Salary = 45000
+                        },
+                        new
+                        {
+                            IdJob = 2,
+                            IdAdult = 2,
+                            JobTitle = "Head of Marketing",
+                            Salary = 36000
                         });
                 });
 
