@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Familyregister.Data;
 using Microsoft.AspNetCore.Mvc;
 using Models;
+using RegisterWebAPI.Repository;
 
 namespace RegisterWebAPI.Controllers
 {
@@ -13,20 +14,22 @@ namespace RegisterWebAPI.Controllers
     [Route("[controller]")]
     public class FamiliesController : ControllerBase
     {
-        private IFamilyService familyService;
+        private IRepository<Family> repositoryFamily;
+        private IRepository<Adult> repositoryAdult;
 
-        public FamiliesController(IFamilyService familyService)
+        public FamiliesController(IRepository<Family> repositoryFamily, IRepository<Adult> repositoryAdult)
         {
-            this.familyService = familyService;
+            this.repositoryFamily = repositoryFamily;
+            this.repositoryAdult = repositoryAdult;
         }
-        
+
         [HttpGet]
         public async Task<ActionResult<IList<Family>>> GetFamiliesAsync()
         {
             try
             {
-                IList<Family> families = await familyService.GetFamiliesAsync();
-                return Ok(families);
+                IEnumerable<Family> enumerable = await repositoryFamily.GetAll();
+                return Ok(enumerable);
             }
             catch (Exception e)
             {
@@ -41,8 +44,8 @@ namespace RegisterWebAPI.Controllers
         {
             try
             {
-                Adult adultAsync = await familyService.GetAdultAsync(id);
-                return Ok(adultAsync);
+                Adult byId = await repositoryAdult.GetById(id);
+                return Ok(byId);
             }
             catch (Exception e)
             {
@@ -58,10 +61,7 @@ namespace RegisterWebAPI.Controllers
             Console.WriteLine(adult.FirstName + " " + streetName + " " + houseNumber);
             try
             {
-                IList<Family> list = familyService.GetFamiliesAsync().GetAwaiter().GetResult();
-                Family familyToAdd = list.First(familyTo =>
-                    familyTo.StreetName.Equals(streetName) && familyTo.HouseNumber == houseNumber);
-                await familyService.UpdateAsync(adult, familyToAdd);
+                await repositoryAdult.Update(adult);
             }
             catch (Exception e)
             {
@@ -76,7 +76,8 @@ namespace RegisterWebAPI.Controllers
         {
             try
             {
-                await familyService.RemoveAdultAsync(id);
+                Adult byId = await repositoryAdult.GetById(id);
+                await repositoryAdult.Remove(byId);
             }
             catch (Exception e)
             {
@@ -92,10 +93,7 @@ namespace RegisterWebAPI.Controllers
             try
             {
                 Console.WriteLine(adult.FirstName + " " + streetName + " " + houseNumber);
-
-                Family familyToAdd = familyService.GetFamiliesAsync().Result.First(familyTo =>
-                    familyTo.StreetName.Equals(streetName) && familyTo.HouseNumber == houseNumber);
-                await familyService.AddAdultAsync(adult, familyToAdd);
+                await repositoryAdult.Add(adult);
             }
             catch (Exception e)
             {

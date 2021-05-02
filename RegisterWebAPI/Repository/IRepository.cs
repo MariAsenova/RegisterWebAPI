@@ -10,5 +10,7 @@ namespace RegisterWebAPI.Repository
         Task Add(T entity);
         //Task AddRange(IList<T> entities);
         Task Remove(T entity);
+        Task Update(T entity);
+
     }
 }

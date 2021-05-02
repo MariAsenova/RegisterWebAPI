@@ -14,6 +14,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Models;
+using RegisterWebAPI.Repository;
 
 namespace RegisterWebAPI
 {
@@ -38,6 +40,8 @@ namespace RegisterWebAPI
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IFileContext, FileContext>();
             services.AddScoped<IUserContext, UserContext>();
+            services.AddScoped<IRepository<Adult>, AdultRepository>();
+            services.AddScoped<IRepository<Family>, FamiliesRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
