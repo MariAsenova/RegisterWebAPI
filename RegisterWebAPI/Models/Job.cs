@@ -7,6 +7,5 @@ namespace Models
         [Key] public int IdJob { get; set; }
         public string JobTitle { get; set; }
         public int Salary { get; set; }
-        
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Familyregister.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Models;
 
 namespace RegisterWebAPI.Repository
@@ -13,7 +14,7 @@ namespace RegisterWebAPI.Repository
         public async Task<IEnumerable<Family>> GetAll()
         {
             await using DataContext context = new DataContext();
-            return context.Families.ToList();
+            return context.Families.Include(family => family.Adults).ToList();
         }
 
         public async Task<Family> GetById(int id)
@@ -29,14 +30,18 @@ namespace RegisterWebAPI.Repository
 
         public async Task Add(Family entity)
         {
-           await using DataContext context = new DataContext();
-            await context.Families.AddAsync(entity);
+            await using DataContext context = new DataContext();
+            EntityEntry<Family> entityEntry = await context.Families.AddAsync(entity);
+            // to get back what you add
+            //Family entityEntryEntity = entityEntry.Entity;
+            await context.SaveChangesAsync();
         }
 
         public async Task Remove(Family entity)
         {
             await using DataContext context = new DataContext();
             context.Families.Remove(entity);
+            await context.SaveChangesAsync();
         }
 
         public async Task Update(Family entity)

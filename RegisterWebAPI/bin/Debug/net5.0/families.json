@@ -8,7 +8,6 @@
           "JobTitle": "Project Manager",
           "Salary": 45000
         },
-        "Id": 43,
         "FirstName": "Maria",
         "LastName": "Asenova",
         "HairColor": "Brown",
@@ -31,7 +30,6 @@
           "JobTitle": "Head of Marketing",
           "Salary": 36000
         },
-        "Id": 88,
         "FirstName": "Kasper",
         "LastName": "Andersen",
         "HairColor": "Black",
@@ -137,7 +135,6 @@
           "JobTitle": "Skin Care Specialist",
           "Salary": 20545
         },
-        "Id": 3,
         "FirstName": "Chaya",
         "LastName": "Mcclure",
         "HairColor": "Black",
@@ -152,7 +149,6 @@
           "JobTitle": "Vice Principal",
           "Salary": 72901
         },
-        "Id": 4,
         "FirstName": "Ophelia",
         "LastName": "Nathan",
         "HairColor": "Black",
@@ -255,24 +251,8 @@
           "JobTitle": "Service Advisor",
           "Salary": 72532
         },
-        "Id": 6,
         "FirstName": "Anastasia",
         "LastName": "Fitzgerald",
-        "HairColor": "Black",
-        "EyeColor": "Brown",
-        "Age": 44,
-        "Weight": 99.8,
-        "Height": 147,
-        "Sex": "F"
-      },
-      {
-        "JobTitle": {
-          "JobTitle": "Service Advisor",
-          "Salary": 72532
-        },
-        "Id": 6,
-        "FirstName": "Anastasia",
-        "LastName": "Fitgerald",
         "HairColor": "Black",
         "EyeColor": "Brown",
         "Age": 44,
@@ -405,7 +385,6 @@
           "JobTitle": "Janitor",
           "Salary": 61437
         },
-        "Id": 7,
         "FirstName": "Cataleya",
         "LastName": "Mcintyre",
         "HairColor": "Blond",
@@ -577,7 +556,6 @@
           "JobTitle": "Doctor",
           "Salary": 67000
         },
-        "Id": 566,
         "FirstName": "Merry",
         "LastName": "Partozz",
         "HairColor": "Brown",

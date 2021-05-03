@@ -34,7 +34,7 @@ namespace RegisterWebAPI.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                throw;
+                return StatusCode(500, e.Message);
             }
         }
 
@@ -50,12 +50,12 @@ namespace RegisterWebAPI.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                throw;
+                return StatusCode(500, e.Message);
             }
         }
 
         [HttpPatch]
-        public async Task UpdateAdultAsync([FromBody] Adult adult, [FromQuery] string streetName,
+        public async Task<ActionResult> UpdateAdultAsync([FromBody] Adult adult, [FromQuery] string streetName,
             [FromQuery] int? houseNumber)
         {
             Console.WriteLine(adult.FirstName + " " + streetName + " " + houseNumber);
@@ -66,8 +66,10 @@ namespace RegisterWebAPI.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                throw;
+                return StatusCode(500, e.Message);
             }
+
+            return Ok();
         }
 
         [HttpDelete]
@@ -94,6 +96,7 @@ namespace RegisterWebAPI.Controllers
             {
                 // TODO
                 // find family, add adult to the list, update the family
+                
                 Console.WriteLine(adult.FirstName + " " + streetName + " " + houseNumber);
                 await repositoryAdult.Add(adult);
             }
@@ -102,7 +105,6 @@ namespace RegisterWebAPI.Controllers
                 Console.WriteLine(e);
                 return StatusCode(500, e.Message);
             }
-
             return Ok();
         }
     }
