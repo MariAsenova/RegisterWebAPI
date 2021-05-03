@@ -11,6 +11,7 @@ namespace RegisterWebAPI.Repository
     {
         public async Task<IEnumerable<Adult>> GetAll()
         {
+            
             await using DataContext context = new DataContext();
             return context.Adults.ToList();
         }

@@ -87,19 +87,23 @@ namespace RegisterWebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task AddAdultAsync([FromBody] Adult adult, [FromQuery] string streetName,
+        public async Task<ActionResult> AddAdultAsync([FromBody] Adult adult, [FromQuery] string streetName,
             [FromQuery] int? houseNumber)
         {
             try
             {
+                // TODO
+                // find family, add adult to the list, update the family
                 Console.WriteLine(adult.FirstName + " " + streetName + " " + houseNumber);
                 await repositoryAdult.Add(adult);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                throw;
+                return StatusCode(500, e.Message);
             }
+
+            return Ok();
         }
     }
 }

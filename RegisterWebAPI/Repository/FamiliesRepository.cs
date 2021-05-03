@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Familyregister.Data;
@@ -17,10 +18,13 @@ namespace RegisterWebAPI.Repository
 
         public async Task<Family> GetById(int id)
         {
+            /*
             await using DataContext context = new DataContext();
             IQueryable<Family> families = context.Families.Where(f => f.IdFamily == id);
             Family firstOrDefaultAsync = await families.FirstOrDefaultAsync(f => f.IdFamily == id);
             return firstOrDefaultAsync;
+            */
+            throw new NotImplementedException();
         }
 
         public async Task Add(Family entity)
