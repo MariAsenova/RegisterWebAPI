@@ -31,9 +31,8 @@ namespace RegisterWebAPI
                     repositoryFamily.Add(family);
                 }
             }
-            
-            
 
+            
             CreateHostBuilder(args).Build().Run();
         }
 
