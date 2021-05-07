@@ -43,6 +43,7 @@ namespace RegisterWebAPI
             services.AddScoped<IRepository<Adult>, AdultRepository>();
             services.AddScoped<IRepository<Family>, FamiliesRepository>();
             services.AddScoped<IRepository<Family>, FamiliesRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

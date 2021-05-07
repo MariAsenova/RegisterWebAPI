@@ -32,6 +32,17 @@ namespace RegisterWebAPI
                 }
             }
 
+            IUserRepository userRepository = new UserRepository();
+            List<User> users = userRepository.GetAll().GetAwaiter().GetResult().ToList();
+            if (!users.Any())
+            {
+                Console.WriteLine("No users, seeding the database");
+                IList<User> seedUsers = SeedUsers();
+                foreach (User user in seedUsers)
+                {
+                    userRepository.Add(user);
+                }
+            }
             
             CreateHostBuilder(args).Build().Run();
         }
@@ -42,6 +53,14 @@ namespace RegisterWebAPI
             FileContext fileContext = new FileContext();
             IList<Family> families = fileContext.GetFamiliesAsync().GetAwaiter().GetResult();
             return families;
+        }
+
+        private static IList<User> SeedUsers()
+        {
+            Console.WriteLine("Getting families from file");
+            UserContext userContext = new UserContext();
+            IList<User> users = userContext.GetUsersAsync().GetAwaiter().GetResult();
+            return users;
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

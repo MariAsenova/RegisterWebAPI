@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Familyregister.Data;
 using Microsoft.AspNetCore.Mvc;
 using Models;
+using RegisterWebAPI.Repository;
 
 
 namespace RegisterWebAPI.Controllers
@@ -11,11 +12,11 @@ namespace RegisterWebAPI.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
-        private IUserService userService;
+        private IUserRepository userServiceRepository;
 
-        public UserController(IUserService userService)
+        public UserController(IUserRepository userServiceRepository)
         {
-            this.userService = userService;
+            this.userServiceRepository = userServiceRepository;
         }
 
         [HttpGet]
@@ -23,7 +24,7 @@ namespace RegisterWebAPI.Controllers
         {
             try
             {
-                User userWithPassword = userService.GetUserWithPassword(username).Result;
+                User userWithPassword = await userServiceRepository.GetUserWithPassword(username);
                 return Ok(userWithPassword);
             }
             catch (Exception e)

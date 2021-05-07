@@ -79,7 +79,7 @@ namespace RegisterWebAPI.Controllers
             try
             {
                 Adult byId = await repositoryAdult.GetById(id);
-                
+
                 await repositoryAdult.Remove(byId);
             }
             catch (Exception e)
@@ -98,13 +98,10 @@ namespace RegisterWebAPI.Controllers
                 // TODO
                 // find family, add adult to the list, update the family
                 IEnumerable<Family> families = repositoryFamily.GetAll().GetAwaiter().GetResult();
-                Family familyFound = families.FirstOrDefault(family => family.StreetName.Equals(streetName) 
+                Family familyFound = families.FirstOrDefault(family => family.StreetName.Equals(streetName)
                                                                        && family.HouseNumber == houseNumber);
-                if (familyFound != null)
-                {
-                     familyFound.Adults.Add(adult);
-                }
-               
+                familyFound.Adults.Add(adult);
+
                 await repositoryFamily.Update(familyFound);
                 Console.WriteLine(adult.FirstName + " " + streetName + " " + houseNumber);
             }
@@ -113,6 +110,7 @@ namespace RegisterWebAPI.Controllers
                 Console.WriteLine(e);
                 return StatusCode(500, e.Message);
             }
+
             return Ok();
         }
     }
