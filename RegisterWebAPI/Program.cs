@@ -17,7 +17,7 @@ namespace RegisterWebAPI
     {
         public static void Main(string[] args)
         {
-            IFamily repositoryFamily = new FamiliesRepository();
+            IRepository<Family> repositoryFamily = new FamiliesRepository();
             List<Family> families = repositoryFamily.GetAll().GetAwaiter().GetResult().ToList();
             if (!families.Any())
             {

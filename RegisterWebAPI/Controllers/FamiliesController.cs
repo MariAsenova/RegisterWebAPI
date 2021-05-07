@@ -97,8 +97,16 @@ namespace RegisterWebAPI.Controllers
             {
                 // TODO
                 // find family, add adult to the list, update the family
+                IEnumerable<Family> families = repositoryFamily.GetAll().GetAwaiter().GetResult();
+                Family familyFound = families.FirstOrDefault(family => family.StreetName.Equals(streetName) 
+                                                                       && family.HouseNumber == houseNumber);
+                if (familyFound != null)
+                {
+                     familyFound.Adults.Add(adult);
+                }
+               
+                await repositoryFamily.Update(familyFound);
                 Console.WriteLine(adult.FirstName + " " + streetName + " " + houseNumber);
-                await repositoryAdult.Add(adult);
             }
             catch (Exception e)
             {

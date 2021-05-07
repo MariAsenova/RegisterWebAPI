@@ -10,7 +10,7 @@ using Models;
 
 namespace RegisterWebAPI.Repository
 {
-    public class FamiliesRepository : IFamily
+    public class FamiliesRepository : IRepository<Family>
     {
         public async Task<IEnumerable<Family>> GetRange(int range)
         {
