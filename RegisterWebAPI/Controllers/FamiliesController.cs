@@ -28,7 +28,7 @@ namespace RegisterWebAPI.Controllers
         {
             try
             {
-                IEnumerable<Family> enumerable = await repositoryFamily.GetAll();
+                IEnumerable<Family> enumerable = await repositoryFamily.GetRange(5);
                 return Ok(enumerable);
             }
             catch (Exception e)
@@ -79,6 +79,7 @@ namespace RegisterWebAPI.Controllers
             try
             {
                 Adult byId = await repositoryAdult.GetById(id);
+                
                 await repositoryAdult.Remove(byId);
             }
             catch (Exception e)
@@ -96,7 +97,6 @@ namespace RegisterWebAPI.Controllers
             {
                 // TODO
                 // find family, add adult to the list, update the family
-                
                 Console.WriteLine(adult.FirstName + " " + streetName + " " + houseNumber);
                 await repositoryAdult.Add(adult);
             }

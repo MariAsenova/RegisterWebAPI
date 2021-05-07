@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Familyregister.Data;
@@ -13,6 +14,12 @@ namespace RegisterWebAPI.Repository
         {
             await using DataContext context = new DataContext();
             return context.Adults.ToList();
+        }
+
+        public async Task<IEnumerable<Adult>> GetRange(int range)
+        {
+            await using DataContext context = new DataContext();
+            return context.Adults.Take(range).ToList();
         }
 
         public async Task<Adult> GetById(int id)
@@ -31,8 +38,10 @@ namespace RegisterWebAPI.Repository
 
         public async Task Remove(Adult entity)
         {
+            Console.WriteLine($"Entity received to remove: {entity.FirstName}");
             await using DataContext context = new DataContext();
             context.Adults.Remove(entity);
+            await context.SaveChangesAsync();
         }
 
         public async Task Update(Adult entity)

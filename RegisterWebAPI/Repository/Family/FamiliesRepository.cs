@@ -5,26 +5,23 @@ using System.Threading.Tasks;
 using Familyregister.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore.Query;
 using Models;
 
 namespace RegisterWebAPI.Repository
 {
-    public class FamiliesRepository : IRepository<Family>
+    public class FamiliesRepository : IFamily
     {
-        public async Task<IEnumerable<Family>> GetAll()
+        public async Task<IEnumerable<Family>> GetRange(int range)
         {
             await using DataContext context = new DataContext();
-            return context.Families.Include(family => family.Adults).ToList();
+            IEnumerable<Family> families = context.Families.Include(family => family.Adults)
+                .ThenInclude(adult => adult.JobTitle).Take(range).ToList();
+            return families;
         }
 
         public async Task<Family> GetById(int id)
         {
-            /*
-            await using DataContext context = new DataContext();
-            IQueryable<Family> families = context.Families.Where(f => f.IdFamily == id);
-            Family firstOrDefaultAsync = await families.FirstOrDefaultAsync(f => f.IdFamily == id);
-            return firstOrDefaultAsync;
-            */
             throw new NotImplementedException();
         }
 
@@ -32,8 +29,7 @@ namespace RegisterWebAPI.Repository
         {
             await using DataContext context = new DataContext();
             EntityEntry<Family> entityEntry = await context.Families.AddAsync(entity);
-            // to get back what you add
-            //Family entityEntryEntity = entityEntry.Entity;
+            Family familyEntityAdded = entityEntry.Entity;
             await context.SaveChangesAsync();
         }
 
@@ -49,6 +45,13 @@ namespace RegisterWebAPI.Repository
             await using DataContext context = new DataContext();
             context.Families.Update(entity);
             await context.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<Family>> GetAll()
+        {
+            // TODO Check why error when keyword using
+            DataContext context = new DataContext();
+            return context.Families.Include(family => family.Adults).ThenInclude(adult => adult.JobTitle).ToList();
         }
     }
 }

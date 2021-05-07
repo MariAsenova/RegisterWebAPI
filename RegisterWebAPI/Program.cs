@@ -17,7 +17,7 @@ namespace RegisterWebAPI
     {
         public static void Main(string[] args)
         {
-            IRepository<Family> repositoryFamily = new FamiliesRepository();
+            IFamily repositoryFamily = new FamiliesRepository();
             List<Family> families = repositoryFamily.GetAll().GetAwaiter().GetResult().ToList();
             if (!families.Any())
             {
@@ -31,6 +31,8 @@ namespace RegisterWebAPI
                     repositoryFamily.Add(family);
                 }
             }
+            
+            
 
             CreateHostBuilder(args).Build().Run();
         }
